@@ -25,6 +25,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        printClassAndFunc("@")
+
         previewView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
         previewView.contentMode = .scaleAspectFit
         view.addSubview(previewView)
@@ -42,6 +45,10 @@ class ViewController: UIViewController {
         if !done {
             session.startRunning()
         }
+    }
+
+    override func viewDidAppear(_: Bool) {
+        presentSecondViewController()
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,5 +135,17 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
         let ciImage = CIImage(cvImageBuffer: pixelBuffer)
         return ciImage
+    }
+}
+
+extension ViewController {
+    func presentSecondViewController() {
+        printClassAndFunc("@")
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let secondVC = storyboard.instantiateViewController(identifier: "SecondViewController")
+
+        // show(secondVC, sender: self)
+        present(secondVC, animated: true)
     }
 }

@@ -13,6 +13,8 @@
 		9D756452278CC95A006A15EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D756450278CC95A006A15EA /* Main.storyboard */; };
 		9D756454278CC95D006A15EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D756453278CC95D006A15EA /* Assets.xcassets */; };
 		9D756457278CC95D006A15EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D756455278CC95D006A15EA /* LaunchScreen.storyboard */; };
+		9D75645F278CDB99006A15EA /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D75645E278CDB99006A15EA /* SecondViewController.swift */; };
+		9D756462278CDF0C006A15EA /* RudifaUtilPkg in Frameworks */ = {isa = PBXBuildFile; productRef = 9D756461278CDF0C006A15EA /* RudifaUtilPkg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,7 @@
 		9D756453278CC95D006A15EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D756456278CC95D006A15EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D756458278CC95D006A15EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D75645E278CDB99006A15EA /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D756462278CDF0C006A15EA /* RudifaUtilPkg in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +63,7 @@
 				9D75644A278CC95A006A15EA /* AppDelegate.swift */,
 				9D75644C278CC95A006A15EA /* SceneDelegate.swift */,
 				9D75644E278CC95A006A15EA /* ViewController.swift */,
+				9D75645E278CDB99006A15EA /* SecondViewController.swift */,
 				9D756450278CC95A006A15EA /* Main.storyboard */,
 				9D756453278CC95D006A15EA /* Assets.xcassets */,
 				9D756455278CC95D006A15EA /* LaunchScreen.storyboard */,
@@ -83,6 +88,9 @@
 			dependencies = (
 			);
 			name = "try-camera-output-as-background";
+			packageProductDependencies = (
+				9D756461278CDF0C006A15EA /* RudifaUtilPkg */,
+			);
 			productName = "try-camera-output-as-background";
 			productReference = 9D756447278CC95A006A15EA /* try-camera-output-as-background.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +119,9 @@
 				Base,
 			);
 			mainGroup = 9D75643E278CC95A006A15EA;
+			packageReferences = (
+				9D756460278CDF0C006A15EA /* XCRemoteSwiftPackageReference "RudifaUtilPkg" */,
+			);
 			productRefGroup = 9D756448278CC95A006A15EA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D75645F278CDB99006A15EA /* SecondViewController.swift in Sources */,
 				9D75644F278CC95A006A15EA /* ViewController.swift in Sources */,
 				9D75644B278CC95A006A15EA /* AppDelegate.swift in Sources */,
 				9D75644D278CC95A006A15EA /* SceneDelegate.swift in Sources */,
@@ -360,6 +372,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9D756460278CDF0C006A15EA /* XCRemoteSwiftPackageReference "RudifaUtilPkg" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rudifa/RudifaUtilPkg";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9D756461278CDF0C006A15EA /* RudifaUtilPkg */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9D756460278CDF0C006A15EA /* XCRemoteSwiftPackageReference "RudifaUtilPkg" */;
+			productName = RudifaUtilPkg;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9D75643F278CC95A006A15EA /* Project object */;
 }
