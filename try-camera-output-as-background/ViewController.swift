@@ -5,18 +5,10 @@
 //  Created by Rudolf Farkas on 10.01.22.
 //
 
+// from https://coderedirect.com/questions/534341/set-up-camera-on-the-background-of-uiview
+
 import AVFoundation
 import UIKit
-
-// class ViewController: UIViewController {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view.
-//    }
-//
-//
-// }
 
 class ViewController: UIViewController {
     var previewView: UIView!
@@ -109,16 +101,16 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             videoDataOutput.connection(with: AVMediaType.video)?.isEnabled = true
 
             previewLayer = AVCaptureVideoPreviewLayer(session: session)
-            previewLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+            previewLayer.frame = view.layer.bounds
+            previewLayer.videoGravity = .resizeAspectFill
+            view.layer.addSublayer(previewLayer)
 
-            let rootLayer: CALayer = previewView.layer
-            rootLayer.masksToBounds = true
-            previewLayer.frame = rootLayer.bounds
-            rootLayer.addSublayer(previewLayer)
+            view.bringSubviewToFront(boxView)
+
             session.startRunning()
         } catch let error as NSError {
             deviceInput = nil
-            print("error: (error.localizedDescription)")
+            print("error: \(error.localizedDescription)")
         }
     }
 
