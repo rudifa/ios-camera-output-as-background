@@ -68,7 +68,7 @@ class AVCaptureHelper: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
             previewLayer = AVCaptureVideoPreviewLayer(session: session)
             previewLayer.frame = parentView.layer.bounds
             previewLayer.videoGravity = .resizeAspectFill
-            parentView.layer.addSublayer(previewLayer)
+            parentView.layer.insertSublayer(previewLayer, at: 0)
 
             session.startRunning()
         } catch let error as NSError {
