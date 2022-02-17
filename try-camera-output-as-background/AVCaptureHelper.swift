@@ -19,7 +19,7 @@ class AVCaptureHelper: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     var captureDevice: AVCaptureDevice!
     let session = AVCaptureSession()
     var currentFrame: CIImage!
-    var done = false
+    var isRunning = false
 
     var parentView: UIView!
 
@@ -38,7 +38,7 @@ class AVCaptureHelper: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         }
         captureDevice = device
         beginSession()
-        done = true
+        isRunning = true
     }
 
     func beginSession() {
@@ -81,10 +81,14 @@ class AVCaptureHelper: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         currentFrame = convertImageFromCMSampleBufferRef(sampleBuffer)
     }
 
-    // clean up AVCapture
+    func startCamera() {
+        session.startRunning()
+        isRunning = true
+    }
+
     func stopCamera() {
         session.stopRunning()
-        done = false
+        isRunning = false
     }
 
     func convertImageFromCMSampleBufferRef(_ sampleBuffer: CMSampleBuffer) -> CIImage {
