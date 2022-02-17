@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "RudifaUtilPkg",
+        "repositoryURL": "https://github.com/rudifa/RudifaUtilPkg",
+        "state": {
+          "branch": null,
+          "revision": "9c5d298fa7a702af50a4899db5f7fc5584ddcf0a",
+          "version": "1.2.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

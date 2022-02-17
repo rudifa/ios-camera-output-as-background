@@ -7,15 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FirstViewController: UIViewController {
     var boxView: UIView!
-
-    var avCaptureHelper = AVCaptureHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        printClassAndFunc("@")
 
         // Add a box view
         boxView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 200))
@@ -23,13 +19,28 @@ class ViewController: UIViewController {
         boxView.alpha = 0.5
         view.addSubview(boxView)
 
-        avCaptureHelper.setupAVCaptureAndDisplay(in: view)
 
         view.bringSubviewToFront(boxView)
+
+        printClassAndFunc("@")
+    }
+
+    override func viewWillAppear(_: Bool) {
+        AVCaptureHelper.shared.displayAVCapture(in: view)
+        printClassAndFunc("@")
     }
 
     override func viewDidAppear(_: Bool) {
-        presentSecondViewController()
+
+        printClassAndFunc("@")
+    }
+
+    override func viewWillDisappear(_: Bool) {
+        printClassAndFunc("@")
+    }
+
+    override func viewDidDisappear(_: Bool) {
+        printClassAndFunc("@")
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,14 +59,19 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController {
-    func presentSecondViewController() {
+extension FirstViewController {
+//    func presentSecondViewController() {
+//        printClassAndFunc("@")
+//
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let secondVC = storyboard.instantiateViewController(identifier: "SecondViewController")
+//
+//        // show(secondVC, sender: self)
+//        present(secondVC, animated: true)
+//    }
+
+    /// Target action for unwind segue.
+    @IBAction func unwindToFirstViewController(_: UIStoryboardSegue) {
         printClassAndFunc("@")
-
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let secondVC = storyboard.instantiateViewController(identifier: "SecondViewController")
-
-        // show(secondVC, sender: self)
-        present(secondVC, animated: true)
     }
 }
