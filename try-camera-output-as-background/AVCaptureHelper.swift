@@ -11,7 +11,7 @@ import AVFoundation
 import UIKit
 
 // AVCaptureVideoDataOutputSampleBufferDelegate protocol and related methods
-class AVCaptureHelper: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
+class AVCaptureHelper: NSObject {
     static let shared = AVCaptureHelper()
 
     override private init() {
@@ -30,18 +30,30 @@ class AVCaptureHelper: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
 
     var parentView: UIView!
 
-    /// Start video capture and display it in the parent view as background
+    /// Display video capture in the parent view as background
     /// - Parameter view: parent view
     func displayAVCapture(in parentView: UIView) {
         self.parentView = parentView
-
-
 
         previewLayer.frame = parentView.layer.bounds
         parentView.layer.insertSublayer(previewLayer, at: 0)
     }
 
-    func beginSession() {
+    func startCamera() {
+        if !isRunning {
+            session.startRunning()
+            isRunning = true
+        }
+    }
+
+    func stopCamera() {
+        if isRunning {
+            session.stopRunning()
+            isRunning = false
+        }
+    }
+
+    private func beginSession() {
         session.sessionPreset = AVCaptureSession.Preset.vga640x480
         guard let device = AVCaptureDevice
             .default(AVCaptureDevice.DeviceType.builtInWideAngleCamera,
@@ -83,17 +95,9 @@ class AVCaptureHelper: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
             print("error: \(error.localizedDescription)")
         }
     }
+}
 
-    func startCamera() {
-        session.startRunning()
-        isRunning = true
-    }
-
-    func stopCamera() {
-        session.stopRunning()
-        isRunning = false
-    }
-
+extension AVCaptureHelper: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         currentFrame = convertImageFromCMSampleBufferRef(sampleBuffer)
     }

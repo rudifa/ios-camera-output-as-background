@@ -103,7 +103,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="back to second"/>
                                 <connections>
-                                    <segue destination="cQX-Ay-CfP" kind="unwind" unwindAction="unwindToFirstViewController:" id="q4L-93-aYH"/>
+                                    <segue destination="cQX-Ay-CfP" kind="unwind" unwindAction="unwindToSecondViewController:" id="FAD-oR-Z2C"/>
                                 </connections>
                             </button>
                         </subviews>
